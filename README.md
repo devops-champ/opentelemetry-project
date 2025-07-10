@@ -15,7 +15,7 @@ Moder applications have lots of moving pieces. Observability helps you collect t
 OpenTelemetry is an open-source tool that connects your application to the observability backend. Opentelemetry collects the data such as logs, traces, and metrics. These collection of data is called telemetry data.
 
 
-### Installing OpenTelemetry
+### Instrumenting OpenTelemetry
 
 Add OpenTelemetry packages to your project using Yarn:
 
@@ -54,4 +54,19 @@ function start(serviceName: string) {
 }
 
 export default start
+```
+
+Add the following code in `auth-service.ts`
+
+```
+import start from './tracer';
+start('auth-service');
+```
+
+
+Add the following code in `todo-service.ts`
+
+```
+import start from './tracer';
+start('todo-service');
 ```
