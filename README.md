@@ -84,4 +84,4 @@ Type `http://localhost:16686' in your browser and you should see the Jager Dashb
 <img src="images/16686.png" alt="Alt text" width="800"/>
 
 
-<img src="images/jaeger." alt="Alt text" width="800"/>
+<img src="images/jaeger.gif" alt="Alt text" width="800"/>
