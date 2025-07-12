@@ -85,3 +85,6 @@ Type `http://localhost:16686' in your browser and you should see the Jager Dashb
 
 
 <img src="images/jaeger.gif" alt="Alt text" width="800"/>
+
+
+We were successfully able to generate traces of our application. Nect let's add metrics to it.

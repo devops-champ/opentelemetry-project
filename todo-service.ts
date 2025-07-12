@@ -1,5 +1,5 @@
 import start from './tracer';
-start('todo-service');
+const meter = start('todo-service');
 import express from 'express';
 import axios from 'axios';
 const app = express();
@@ -7,7 +7,20 @@ const app = express();
 import Redis from "ioredis";
 const redis = new Redis({host:'redis'});
 
+const calls = meter.createHistogram('http-calls');
 
+app.use((req,res,next)=>{
+    const startTime = Date.now();
+    req.on('end',()=>{
+        const endTime = Date.now();
+        calls.record(endTime-startTime,{
+            route: req.route?.path,
+            status: res.statusCode,
+            method: req.method
+        })
+    })
+    next();
+})
 
 app.get('/todos', async (req, res) => {
     const user = await axios.get('http://auth:8080/auth');
